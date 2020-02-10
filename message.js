@@ -9,14 +9,18 @@ var coins = require("../../coins.json");
 module.exports = async (bot, message) => {
     if(message.author.bot || message.channel.type === "dm") return;
 
-    // No Swear Measure
-    noSwear(message);
+    try {
+        // Level System
+        levelSystem(message);
 
-    // Level System
-    levelSystem(message);
+        // No Swear Measure
+        noSwear(message);
 
-    // Coins System
-    coinsSystem(message);
+        // Coins System
+        coinsSystem(message);
+    } catch (e) {
+        console.log(e);
+    }
 
     let args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
@@ -56,7 +60,7 @@ function levelSystem(message) {
         message.channel.send(lvlUp).then(msg => {msg.delete(10000)});
     }
 
-    fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+    fs.writeFile("../../xp.json", JSON.stringify(xp), (err) => {
         if(err) console.log(err);
     });
 }
@@ -74,7 +78,7 @@ function coinsSystem(message) {
     
     coins[message.author.id].coins += coinsAdd;
 
-    fs.writeFile("./coins.json", JSON.stringify(coins), 'utf8', (err) => {
+    fs.writeFile("../../coins.json", JSON.stringify(coins), 'utf8', (err) => {
         if(err) console.log(err);
     });
 }
