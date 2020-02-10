@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const { green } = require("../../colors.json");
 const { stripIndents } = require("common-tags");
 const dateFormat = require("dateformat");
-const { steamToken } = require("../../botconfig.json");
+//const { steamToken } = require("../../botconfig.json");
 
 module.exports = { 
     config: {
@@ -16,14 +16,14 @@ module.exports = {
     },
     run: async (bot, message, args) => {
         if(!args[0]) return message.channel.send("Please provide an account name!");
-        const url = `http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=${steamToken}&vanityurl=${args.join(" ")}`;
+        const url = `http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=${process.env.STEAMTOKEN}&vanityurl=${args.join(" ")}`;
 
         fetch(url).then(res => res.json()).then(body => {
             if(body.response.success === 42) return message.channel.send("I was unable to find a steam profile with that name");
 
                 const id = body.response.steamid;
-                const summaries = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${steamToken}&steamids=${id}`;
-                const bans = `http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=${steamToken}&steamids=${id}`;
+                const summaries = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAMTOKEN}&steamids=${id}`;
+                const bans = `http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=${process.env.STEAMTOKEN}&steamids=${id}`;
                 const state = ["Offline", "Online", "Busy", "Away", "Snooze", "Looking to trade", "Looking to play"];
 
         fetch(summaries).then(res => res.json()).then(body => {

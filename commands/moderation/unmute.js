@@ -1,7 +1,5 @@
-const discord = require("discord.js");
-const superagent = require("superagent");
-const botconfig = require("../../botconfig.json");
-const colors = require("../../colors.json");
+const { RichEmbed } = require("discord.js");
+const { red } = require("../../colors.json");
 
 module.exports = {
     

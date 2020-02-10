@@ -1,5 +1,5 @@
 const { Client, Collection } = require("discord.js");
-const { token } = require("./botconfig.json");
+// const { token } = require("./botconfig.json");
 const bot = new Client();
 
 ["aliases", "commands"].forEach(x => bot[x] = new Collection());
@@ -12,4 +12,4 @@ module.exports = {
 }
 
 // Start the bot
-bot.login(token);
+bot.login(process.env.TOKEN);
