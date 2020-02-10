@@ -9,18 +9,14 @@ var coins = require("../../coins.json");
 module.exports = async (bot, message) => {
     if(message.author.bot || message.channel.type === "dm") return;
 
-    try {
-        // Level System
-        levelSystem(message);
+    // Level System
+    //levelSystem(message);
 
-        // No Swear Measure
-        noSwear(message);
+    // No Swear Measure
+    //noSwear(message);
 
-        // Coins System
-        coinsSystem(message);
-    } catch (e) {
-        console.log(e);
-    }
+    // Coins System
+    //coinsSystem(message);
 
     let args = message.content.slice(1).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
