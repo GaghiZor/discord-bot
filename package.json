@@ -1,0 +1,22 @@
+{
+  "name": "dadice-bot",
+  "version": "1.0.0",
+  "description": "Team DaDiCe's discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "GaghiZor",
+  "license": "ISC",
+  "dependencies": {
+    "common-tags": "^1.8.0",
+    "dateformat": "^3.0.3",
+    "discord.js": "^11.5.1",
+    "node": "^13.7.0",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.2",
+    "superagent": "^5.2.1",
+    "unirest": "^0.6.0"
+  }
+}
