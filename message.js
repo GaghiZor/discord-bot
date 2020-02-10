@@ -22,7 +22,7 @@ module.exports = async (bot, message) => {
         console.log(e);
     }
 
-    let args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g);
+    let args = message.content.slice(1).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
 
     if(!message.content.startsWith(process.env.PREFIX)) return;
@@ -57,7 +57,7 @@ function levelSystem(message) {
             .addField('Congratulations', message.author.tag)
             .addField("Your new level is", currentLevel+1)
 
-        message.channel.send(lvlUp).then(msg => {msg.delete(10000)});
+        message.channel.send(lvlUp).then(msg => {msg.delete(10000)}).catch(e => console.log(e));
     }
 
     fs.writeFile("../../xp.json", JSON.stringify(xp), (err) => {
