@@ -1,8 +1,6 @@
 const { RichEmbed } = require("discord.js");
 const { red } = require("../../colors.json");
 
-let xp = require("../../xp.json");
-
 module.exports = {
     
     config: {
@@ -22,8 +20,8 @@ module.exports = {
 
         if(isNaN(args[0])) return message.reply("Ex: $givexp 20").then(x => x.delete(10000));
 
-        let currentXp = xp[message.author.id].xp
-        xp[message.author.id].xp = currentXp + parseInt(args[0]);
+        //let currentXp = xp[message.author.id].xp
+        //xp[message.author.id].xp = currentXp + parseInt(args[0]);
 
         message.author.send("You gave yourself [" + args[0] + "] XP. \n Server: " + message.guild.name);
 

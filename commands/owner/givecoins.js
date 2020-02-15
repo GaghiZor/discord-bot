@@ -1,8 +1,6 @@
 const { RichEmbed } = require("discord.js");
 const { red } = require("../../colors.json");
 
-let coins = require("../../coins.json");
-
 module.exports = {
     
     config: {
@@ -22,8 +20,8 @@ module.exports = {
 
         if(isNaN(args[0])) return message.reply("Ex: $givecoins 20").then(x => x.delete(10000));
 
-        let currentCoins = coins[message.author.id].coins
-        coins[message.author.id].coins = currentCoins + parseInt(args[0]);
+        //let currentCoins = coins[message.author.id].coins
+        //coins[message.author.id].coins = currentCoins + parseInt(args[0]);
 
         message.author.send("You gave yourself [" + args[0] + "] Coins. \n Server: " + message.guild.name);
 

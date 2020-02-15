@@ -27,7 +27,7 @@ module.exports = {
                 .setImage(body.file)
                 .setTimestamp()
                 .setFooter(index.VERSION, bot.user.displayAvatarURL)
-            message.channel.send(embed).then(async embedMessage => {
+            message.channel.send({embed: embed}).then(async embedMessage => {
                 await embedMessage.react("👍");
                 await embedMessage.react("👎");
             });

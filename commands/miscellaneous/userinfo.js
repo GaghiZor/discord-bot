@@ -1,6 +1,3 @@
-let xp = require("../../xp.json");
-let coins = require("../../coins.json");
-
 const { RichEmbed } = require("discord.js");
 const { blue } = require("../../colors.json")
 
@@ -16,21 +13,8 @@ module.exports = {
     },
 
     run: async (bot, message, args) => {
-        if(!xp[message.author.id]) {
-            xp[message.author.id] = {
-                name: message.author.username,
-                xp: 0,
-                level: 1
-            };
-        }
-
-        if(!coins[message.author.id]) {
-            coins[message.author.id] = {
-                name: message.author.username,
-                coins: 0
-            };
-        }
-
+        message.channel.send("Working").then((msg) => msg.delete(15000));
+        /*
         let currentXp = xp[message.author.id].xp;
         let currentLevel = xp[message.author.id].level;
         let nextLevelXp = currentLevel * 300;
@@ -50,6 +34,6 @@ module.exports = {
             .addField('Visit our $websites', "[ ^_^ ]")
             .setFooter(`${difference} XP until you level up`, message.author.displayAvatarURL)
         
-        message.channel.send(lvlEmbed).then(msg => {msg.delete(10000)});
+        message.channel.send(lvlEmbed).then(msg => {msg.delete(10000)});*/
     }
 }

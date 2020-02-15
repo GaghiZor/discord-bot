@@ -31,7 +31,7 @@ module.exports = {
                 const dir = bot.commands.filter(c => c.config.category === category);
                 const capitalise = category.slice(0, 1).toUpperCase() + category.slice(1);
                 try {
-                    embed.addField(`❯ **${capitalise} [${dir.size}]**:`, dir.map(c => `\`${c.config.name}\``).join(" "));
+                    embed.addField(`> ** ${capitalise} [${dir.size}]**:`, dir.map(c => `\`${c.config.name}\``).join(" "));
                 } catch(e) {
                     console.log(e);
                 }
