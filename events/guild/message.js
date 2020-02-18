@@ -1,16 +1,7 @@
 const { prefix } = require("../../botconfig.json");
 const { RichEmbed } = require("discord.js");
 const { blue } = require("../../colors.json");
-
-// Database
-var admin = require("firebase-admin");
-var firebase = require("../../firebase.json");
-
-admin.initializeApp({
-    credential: admin.credential.cert(firebase)
-});
-
-const db = admin.firestore();
+const { db } = require("../../database.js");
 
 module.exports = async (bot, message) => {
     if(message.author.bot || message.channel.type === "dm") return;

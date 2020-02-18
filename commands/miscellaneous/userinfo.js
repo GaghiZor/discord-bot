@@ -1,5 +1,7 @@
 const { RichEmbed } = require("discord.js");
-const { blue } = require("../../colors.json")
+const { blue } = require("../../colors.json");
+
+const { db } = require("../../database.js");
 
 module.exports = {
 
@@ -14,13 +16,23 @@ module.exports = {
 
     run: async (bot, message, args) => {
         message.channel.send("Working").then((msg) => msg.delete(15000));
-        /*
-        let currentXp = xp[message.author.id].xp;
-        let currentLevel = xp[message.author.id].level;
+
+        let currentXp, currentLevel, currentCoins;
+
+        await await db.collection("users").doc(message.author.id).get().then(function(doc) {
+            if(doc.exists) {
+                currentXp = doc.data().xp;
+                currentLevel = doc.data().level;
+                currentCoins = doc.data().coins;
+            } else {
+                console.log("No document found in database.");
+            }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+
         let nextLevelXp = currentLevel * 300;
         let difference = nextLevelXp - currentXp;
-        
-        let currentCoins = coins[message.author.id].coins;
 
         let lvlEmbed = new RichEmbed()
             .setTitle('User Informations')
@@ -34,6 +46,6 @@ module.exports = {
             .addField('Visit our $websites', "[ ^_^ ]")
             .setFooter(`${difference} XP until you level up`, message.author.displayAvatarURL)
         
-        message.channel.send(lvlEmbed).then(msg => {msg.delete(10000)});*/
+        message.channel.send(lvlEmbed).then(msg => {msg.delete(10000)});
     }
 }
