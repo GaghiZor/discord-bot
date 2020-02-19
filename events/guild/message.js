@@ -1,4 +1,4 @@
-const { prefix } = require("../../botconfig.json");
+const { PREFIX } = require("../../globals.js");
 const { RichEmbed } = require("discord.js");
 const { blue } = require("../../colors.json");
 const { db } = require("../../database.js");
@@ -25,7 +25,7 @@ module.exports = async (bot, message) => {
     levelSystem(message);
     coinsSystem(message);
         
-    if(!message.content.startsWith(prefix)) return;
+    if(!message.content.startsWith(PREFIX)) return;
     let commandfile = bot.commands.get(cmd) || bot.commands.get(bot.aliases.get(cmd));
     if(commandfile) commandfile.run(bot, message, args);
     // No Swear Measure

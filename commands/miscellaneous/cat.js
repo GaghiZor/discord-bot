@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 const { blue } = require("../../colors.json");
-const index = require("../../index.js");
+const { VERSION } = require("../../globals.js");
 const fetch = require("node-fetch");
 
 module.exports = {
@@ -16,6 +16,7 @@ module.exports = {
 
     run: async (bot, message, args) => {
         let msg = await message.channel.send("Searching...");
+        let check = false;
 
         fetch('http://aws.random.cat/meow')
         .then(res => res.json()).then(body => {
@@ -24,14 +25,21 @@ module.exports = {
             let embed = new RichEmbed()
                 .setColor(blue)
                 .addField("Here's a cat for you.", '[^_^]')
-                .setImage(body.file)
+                .setImage(body.body)
                 .setTimestamp()
-                .setFooter(index.VERSION, bot.user.displayAvatarURL)
+                .setFooter(VERSION, bot.user.displayAvatarURL)
             message.channel.send({embed: embed}).then(async embedMessage => {
                 await embedMessage.react("👍");
                 await embedMessage.react("👎");
             });
             msg.delete();
+            check = true;
         })
+
+        if(check === false)
+        {
+            msg.delete();
+            message.channel.send("Can't find any cats right now :( ");
+        }
     }
 }

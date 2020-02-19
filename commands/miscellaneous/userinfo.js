@@ -1,6 +1,5 @@
 const { RichEmbed } = require("discord.js");
 const { blue } = require("../../colors.json");
-
 const { db } = require("../../database.js");
 
 module.exports = {

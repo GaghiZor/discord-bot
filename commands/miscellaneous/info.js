@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 const { red } = require("../../colors.json");
-const index = require("../../index.js");
+const { VERSION, AUTHOR } = require("../../globals.js");
 
 module.exports = {
     
@@ -19,7 +19,8 @@ module.exports = {
             .setTitle('Informations')
             .addField('**Server Name**', message.guild.name)
             .addField('**Server Member Count**', message.guild.memberCount)
-            .addField('**Bot Version**', index.VERSION)
+            .addField('**Bot Version**', VERSION)
+            .addField('**Bot Author**', AUTHOR)
             .setThumbnail(message.author.avatarURL)
             .setFooter('**Visit our !websites**', message.guild.iconURL)
         message.channel.send(embed);

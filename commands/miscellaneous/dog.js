@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 const { blue } = require("../../colors.json");
-const index = require("../../index.js");
+const { VERSION } = require("../../globals.js");
 const fetch = require("node-fetch");
 
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
                 .addField("Here's a dog for you.", '[^_^]')
                 .setImage(body.message)
                 .setTimestamp()
-                .setFooter(index.VERSION, bot.user.displayAvatarURL)
+                .setFooter(VERSION, bot.user.displayAvatarURL)
             message.channel.send({embed: embed}).then(async embedMessage => {
                 await embedMessage.react("👍");
                 await embedMessage.react("👎");

@@ -5,11 +5,6 @@ const bot = new Client();
 ["aliases", "commands"].forEach(x => bot[x] = new Collection());
 ["command", "event"].forEach(x => require(`./handlers/${x}`)(bot));
 
-// Info Variables
-module.exports = {
-    VERSION: "1.0.4 Alpha",
-    AUTHOR: "GaghiZor"
-}
-
 // Start the bot
-bot.login(token);
+//bot.login(process.env.TOKEN); // Heroku
+bot.login(token);               // Local
