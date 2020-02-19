@@ -27,6 +27,7 @@ module.exports = {
             .addField("Command", "Clear")
             .addField("Moderator: ", message.author.username)
             .addField("Number of messages: ", args[0])
+            .addField("Channel: ", message.channel.name)
             .addField("Date: ", message.createdAt.toLocaleString())
 
         let sChannel = message.guild.channels.find(c => c.name === "logs");

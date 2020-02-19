@@ -6,6 +6,9 @@ const { db } = require("../../database.js");
 module.exports = async (bot, message) => {
     if(message.author.bot || message.channel.type === "dm") return;
 
+    // No Swear Measure
+    noSwear(message);
+    
     let args = message.content.slice(1).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
 
@@ -28,8 +31,6 @@ module.exports = async (bot, message) => {
     if(!message.content.startsWith(PREFIX)) return;
     let commandfile = bot.commands.get(cmd) || bot.commands.get(bot.aliases.get(cmd));
     if(commandfile) commandfile.run(bot, message, args);
-    // No Swear Measure
-    noSwear(message);
 }
 
 // Leveling System

@@ -33,7 +33,7 @@ module.exports = {
         let nextLevelXp = currentLevel * 300;
         let difference = nextLevelXp - currentXp;
 
-        let lvlEmbed = new RichEmbed()
+        let infoEmbed = new RichEmbed()
             .setTitle('User Informations')
             .setAuthor(message.author.tag)
             .setColor(blue)
@@ -45,6 +45,6 @@ module.exports = {
             .addField('Visit our $websites', "[ ^_^ ]")
             .setFooter(`${difference} XP until you level up`, message.author.displayAvatarURL)
         
-        message.channel.send(lvlEmbed).then(msg => {msg.delete(10000)});
+        message.channel.send(infoEmbed).then(msg => {msg.delete(10000)});
     }
 }
