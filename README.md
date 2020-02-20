@@ -14,3 +14,6 @@ ANIME NPM
 
 Discord BOT Example
     -> https://github.com/Emy/filo
+
+NSFW Discord BOT
+    -> https://github.com/Mitorisia/Komugari
