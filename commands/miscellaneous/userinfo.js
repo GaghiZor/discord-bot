@@ -14,7 +14,7 @@ module.exports = {
     },
 
     run: async (bot, message, args) => {
-        message.channel.send("Working").then((msg) => msg.delete(15000));
+        message.channel.send("Working").then((msg) => msg.delete(3000));
 
         let currentXp, currentLevel, currentCoins;
 
