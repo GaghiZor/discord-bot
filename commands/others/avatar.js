@@ -5,10 +5,10 @@ const { VERSION } = require("../../globals.js");
 
 module.exports = {
     config: {
-        name: "foxgirl",
-        aliases: ["fg"],
+        name: "avatar",
+        aliases: [],
         usage: "",
-        description: "Wanna see a fox girl ?",
+        description: "Generate a random avatar",
         accesibleby: "Members",
         category: "others"
     },
@@ -16,7 +16,7 @@ module.exports = {
     run: async (bot, message, args) => {
         try {
             const data = await (await fetch('https://nekos.life/api/v2/img/avatar')).json();
-            if (!(data || data.url)) return console.log("No [foxgirl] available.");
+            if (!(data || data.url)) return console.log("No [avatar] available.");
 
             let embed = new RichEmbed()
                 .setColor(blue)
