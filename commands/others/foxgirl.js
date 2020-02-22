@@ -16,7 +16,7 @@ module.exports = {
     run: async (bot, message, args) => {
         try {
             const data = await (await fetch('https://nekos.life/api/v2/img/fox_girl')).json();
-            if (!(data || data.url)) return console.log("No [pat] gif available.");
+            if (!(data || data.url)) return console.log("No [foxgirl] available.");
 
             let embed = new RichEmbed()
                 .setColor(blue)
