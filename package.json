@@ -1,6 +1,6 @@
 {
   "name": "dadice-bot",
-  "version": "1.0.4",
+  "version": "1.0.5 Alpha",
   "description": "Team DaDiCe's discord bot",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "node": "^13.7.0",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.2",
+    "rebuild": "^0.1.2",
     "superagent": "^5.2.1",
     "unirest": "^0.6.0"
   },

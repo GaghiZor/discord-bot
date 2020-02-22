@@ -1,4 +1,4 @@
-const { readdirSync } = require("fs");
+const { readdirSync } = require("fs")
 
 module.exports = (bot) => {
     const load = dirs => {
@@ -10,5 +10,5 @@ module.exports = (bot) => {
           };
         };
     
-    ["miscellaneous", "moderation", "owner", "music", "fun", "animals", "nsfw"].forEach(x => load(x));
+    ["miscellaneous", "moderation", "owner", "fun", "animals", "nsfw"].forEach(x => load(x));
 };
