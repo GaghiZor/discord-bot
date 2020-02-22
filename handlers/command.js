@@ -10,5 +10,5 @@ module.exports = (bot) => {
           };
         };
     
-    ["miscellaneous", "moderation", "owner", "fun", "animals", "nsfw"].forEach(x => load(x));
+    ["miscellaneous", "moderation", "owner", "fun", "animals", "nsfw", "others"].forEach(x => load(x));
 };

@@ -6,10 +6,10 @@ const fetch = require("node-fetch");
 module.exports = {
 
     config: {
-        name: "cat",
+        name: "lizard",
         aliases: [],
         usage: "",
-        description: "Shows you a random cat picture.",
+        description: "Shows you a random lizard picture.",
         accessibleby: "Members",
         category: "animals"
     },
@@ -18,7 +18,7 @@ module.exports = {
         let msg = await message.channel.send("Searching...");
         let check = false;
 
-        fetch('https://nekos.life/api/v2/img/meow')
+        fetch('https://nekos.life/api/v2/img/lizard')
         .then(res => res.json()).then(body => {
             if(!body) return message.channel.send("Can't find any cats right now.")
 

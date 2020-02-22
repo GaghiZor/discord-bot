@@ -5,10 +5,10 @@ const { VERSION } = require("../../globals.js");
 
 module.exports = {
     config: {
-        name: "boobs",
+        name: "kuni",
         aliases: [],
         usage: "",
-        description: "Booby time **[NSFW]**",
+        description: "Kuni **[NSFW]**",
         accesibleby: "Members",
         category: "nsfw"
     },
@@ -17,8 +17,8 @@ module.exports = {
         try {
             if(message.channel.nsfw === true) {
                 const member = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-                const data = await (await fetch('https://nekos.life/api/v2/img/boobs')).json();
-                if (!(data || data.url)) return console.log("No [boobs] available.");
+                const data = await (await fetch('https://nekos.life/api/v2/img/kuni')).json();
+                if (!(data || data.url)) return console.log("No [kuni] available.");
     
                 let embed = new RichEmbed()
                     .setColor(blue)
