@@ -28,6 +28,8 @@ module.exports = {
         if(!args[1])
             moreInfo = "No special actions.";
         else moreInfo = args.slice(1).join(" ");
+        
+        sChannel.send("@everyone");
 
         let embed = new RichEmbed()
             .setColor(red)
@@ -36,7 +38,7 @@ module.exports = {
             .addField('**More info**', moreInfo)
             .addField('**Posted by**', message.author.tag)
             .setThumbnail(message.author.avatarURL)
-        sChannel.send("@everyone" + embed).then(async msg => {
+        sChannel.send(embed).then(async msg => {
             await msg.react("✅");
             await msg.react("❌");
         });;
