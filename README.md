@@ -1,11 +1,6 @@
 # discord-bot
 Team DaDiCe'd discord bot
 
-Chages:
-    -> Get values from db to $ui command
-    -> [joke], [chucknorris], [cuddle], [foxgirl], [hug], [kidol], [kiss], [pat], [slap], [boobs], [whois] commands added. 
-
-
 ANIME API: 
     -> https://nekos.life/api/v2/endpoints
 
