@@ -30,7 +30,7 @@ module.exports = {
         else moreInfo = args.slice(1).join(" ");
 
         sChannel.send("@everyone");
-        
+
         let embed = new RichEmbed()
             .setColor(red)
             .setTitle('Free App')

@@ -28,7 +28,7 @@ module.exports = {
         if(!args[1])
             moreInfo = "No special actions.";
         else moreInfo = args.slice(1).join(" ");
-        
+
         sChannel.send("@everyone");
 
         let embed = new RichEmbed()
