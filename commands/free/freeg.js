@@ -1,4 +1,5 @@
 const { RichEmbed } = require("discord.js");
+const { red } = require("../../colors.json");
 
 module.exports = {
 
@@ -17,7 +18,7 @@ module.exports = {
 
         if(!args[0]) return message.channel.send("You must attach a link.");
 
-        if(!member.hasPermission(["EMBED_LINKS", "MENTION_EVERYONE"]) || !message.guild.owner) return message.channel.send("You do not have permission.");
+        if(!message.member.hasPermission(["EMBED_LINKS", "MENTION_EVERYONE"]) || !message.guild.owner) return message.channel.send("You do not have permission.");
 
         // Grab free games channel
         let sChannel = message.guild.channels.find(x => x.name === "free-games");
@@ -27,6 +28,8 @@ module.exports = {
         if(!args[1])
             moreInfo = "No special actions.";
         else moreInfo = args.slice(1).join(" ");
+
+        sChannel.send("@everyone");
 
         let embed = new RichEmbed()
             .setColor(red)

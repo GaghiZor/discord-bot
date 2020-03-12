@@ -5,10 +5,10 @@ const { db } = require("../../database.js");
 module.exports = {
 
     config: {
-        name: "userinfo",
-        aliases: ["ui", "useri"],
+        name: "items",
+        aliases: ["inv", "inventory"],
         usage: "",
-        description: "User informations",
+        description: "Inventory",
         accessibleby: "Members",
         category: "miscellaneous"
     },
@@ -16,13 +16,10 @@ module.exports = {
     run: async (bot, message, args) => {
         message.channel.send("Working").then((msg) => msg.delete(3000));
 
-        let currentXp, currentLevel, currentCoins, relic, artifact;
+        let relic, artifact;
 
         await await db.collection("users").doc(message.author.id).get().then(function(doc) {
             if(doc.exists) {
-                currentXp = doc.data().xp;
-                currentLevel = doc.data().level;
-                currentCoins = doc.data().coins;
                 relic = doc.data().relic;
                 artifact = doc.data().artifact;
             } else {
@@ -32,21 +29,13 @@ module.exports = {
             console.log("Error getting document:", error);
         });
 
-        let nextLevelXp = currentLevel * 300;
-        let difference = nextLevelXp - currentXp;
-
         let infoEmbed = new RichEmbed()
-            .setTitle('User Informations')
+            .setTitle('Inventory')
             .setAuthor(message.author.tag)
             .setColor(blue)
             .setThumbnail(message.author.avatarURL)
-            .addField("Coins", currentCoins, true)
-            .addField("Level", currentLevel, true)
-            .addField("XP", currentXp, true)
             .addField("Relics", relic, true)
             .addField("Artifacts", artifact, true)
-            .addField('Visit our $websites', "[ ^_^ ]")
-            .setFooter(`${difference} XP until you level up`, message.author.displayAvatarURL)
         
         message.channel.send(infoEmbed).then(msg => {msg.delete(10000)});
     }

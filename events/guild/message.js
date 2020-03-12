@@ -21,8 +21,33 @@ module.exports = async (bot, message) => {
             xp: 0,
             level: 1,
             coins: 100,
+            relic: 0,
+            artifact: 0,
             created: message.createdAt.toLocaleString(),
         }, { merge: true });
+    }
+    else {
+        if(document.get("username") == null){
+            document.ref.update({ username: message.author.tag })
+         }
+        if(document.get("userId") == null){
+            document.ref.update({ userId: message.author.id })
+         }
+        if(document.get("xp") == null){
+            document.ref.update({ xp: 0 })
+         }
+        if(document.get("level") == null){
+            document.ref.update({ level: 1 })
+         }
+        if(document.get("coins") == null){
+            document.ref.update({ coins: 0 })
+         }
+        if(document.get("relic") == null){
+            document.ref.update({ relic: 0 })
+         }
+        if(document.get("artifact") == null){
+            document.ref.update({ artifact: 0 })
+         }
     }
     
     levelSystem(message);
@@ -37,12 +62,15 @@ module.exports = async (bot, message) => {
 async function levelSystem(message)  {
     let xpAdd = Math.floor(Math.random() * 10) + 1;
 
-    let xp, currentLevel, nextLevel;
+    let xp, currentLevel, nextLevel, artifact = 0;
+
+    let rand = Math.floor(Math.random() * 500) + 1;
     
     await db.collection("users").doc(message.author.id).get().then(function(doc) {
 		if(doc.exists) {
             xp = doc.data().xp;
             currentLevel = doc.data().level;
+            artifact = doc.data().artifact;
         } else {
 			console.log("No document found in database.");
 		}
@@ -50,7 +78,7 @@ async function levelSystem(message)  {
 		console.log("Error getting document:", error);
     });
     
-    xp += xpAdd;
+    xp += xpAdd + artifact;
     nextLevel = currentLevel * 300;
 
     if(nextLevel <= xp) {
@@ -72,17 +100,37 @@ async function levelSystem(message)  {
     db.collection("users").doc(message.author.id).update({
         xp: xp 
     });
+
+    if(rand === 250)
+    {
+        artifact += 1;
+
+        let item = new RichEmbed()
+            .setTitle("Congratulations. You found an Artifact.")
+            .setThumbnail(message.author.avatarURL)
+            .setColor(blue)
+            .addField('To see how many artifacts you have type', "$items")
+
+        message.channel.send(item).then(msg => {msg.delete(10000)}).catch(e => console.log(e));
+
+        db.collection("users").doc(message.author.id).update({
+            artifact: artifact
+        });
+    }
 }
 
 // Coins System
 async function coinsSystem(message) {
     let coinsAdd = Math.floor(Math.random() * 2) + 1;
 
-    let coins;
+    let coins, relic = 0;
+
+    let rand = Math.floor(Math.random() * 500) + 1;
 
     await db.collection("users").doc(message.author.id).get().then(function(doc) {
 		if(doc.exists) {
             coins = doc.data().coins;
+            relic = doc.data().relic;
         } else {
 			console.log("No document found in database.");
 		}
@@ -90,11 +138,28 @@ async function coinsSystem(message) {
 		console.log("Error getting document:", error);
     });
     
-    coins += coinsAdd;
+    coins += coinsAdd + relic;
 
     db.collection("users").doc(message.author.id).update({
         coins: coins
     })
+
+    if(rand === 250)
+    {
+        relic += 1;
+
+        let item = new RichEmbed()
+            .setTitle("Congratulations. You found a Relic.")
+            .setThumbnail(message.author.avatarURL)
+            .setColor(blue)
+            .addField('To see how many relics you have type', "$items")
+
+        message.channel.send(item).then(msg => {msg.delete(10000)}).catch(e => console.log(e));
+
+        db.collection("users").doc(message.author.id).update({
+            relic: relic
+        });
+    }
 }
 
 // Anti-Swearing
