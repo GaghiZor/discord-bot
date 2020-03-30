@@ -15,11 +15,11 @@ module.exports = async bot => {
 
 
    // Send random relics / artifacts
-   var textChannel = bot.channels.find(channel => channel.id === "424326387151929344");
-   var textChannel2 = bot.channels.find(channel => channel.id === "672513099630247948");
+   // var textChannel = bot.channels.find(channel => channel.id === "424326387151929344");
+   // var textChannel2 = bot.channels.find(channel => channel.id === "672513099630247948");
 
-   setInterval(() => {
-       textChannel2.send("Test.");
-   }, 5000);
+   // setInterval(() => {
+       // textChannel2.send("Test.");
+   // }, 5000);
 
 }
