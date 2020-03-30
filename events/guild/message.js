@@ -64,7 +64,7 @@ async function levelSystem(message)  {
 
     let xp, currentLevel, nextLevel, artifact = 0;
 
-    let rand = Math.floor(Math.random() * 500) + 1;
+    let rand = Math.floor(Math.random() * 30) + 1;
     
     await db.collection("users").doc(message.author.id).get().then(function(doc) {
 		if(doc.exists) {
@@ -101,7 +101,7 @@ async function levelSystem(message)  {
         xp: xp 
     });
 
-    if(rand === 250)
+    if(rand === 15)
     {
         artifact += 1;
 
@@ -125,7 +125,7 @@ async function coinsSystem(message) {
 
     let coins, relic = 0;
 
-    let rand = Math.floor(Math.random() * 500) + 1;
+    let rand = Math.floor(Math.random() * 30) + 1;
 
     await db.collection("users").doc(message.author.id).get().then(function(doc) {
 		if(doc.exists) {
@@ -144,7 +144,7 @@ async function coinsSystem(message) {
         coins: coins
     })
 
-    if(rand === 250)
+    if(rand === 15)
     {
         relic += 1;
 
