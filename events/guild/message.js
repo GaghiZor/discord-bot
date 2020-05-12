@@ -79,7 +79,7 @@ async function levelSystem(message)  {
     });
     
     xp += xpAdd + artifact;
-    nextLevel = currentLevel * 300;
+    nextLevel = (currentLevel * 1000) * (currentLevel + 1) / 2;
 
     if(nextLevel <= xp) {
         currentLevel += 1;
