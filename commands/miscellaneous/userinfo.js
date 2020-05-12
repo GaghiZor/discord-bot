@@ -32,7 +32,7 @@ module.exports = {
             console.log("Error getting document:", error);
         });
 
-        let nextLevelXp = currentLevel * 300;
+        let nextLevelXp = (currentLevel * 1000) * (currentLevel + 1) / 2;
         let difference = nextLevelXp - currentXp;
 
         let infoEmbed = new RichEmbed()
