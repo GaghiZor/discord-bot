@@ -1,6 +1,6 @@
 {
   "name": "dadice-bot",
-  "version": "1.0.5 Alpha",
+  "version": "1.0.6 Alpha",
   "description": "Team DaDiCe's discord bot",
   "main": "index.js",
   "scripts": {
