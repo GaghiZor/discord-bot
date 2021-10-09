@@ -1,5 +1,5 @@
 # discord-bot
-Team DaDiCe'd discord bot
+Team DaDiCe's discord bot
 
 ANIME API: 
     -> https://nekos.life/api/v2/endpoints
